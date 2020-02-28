@@ -1,0 +1,24 @@
+{
+  "name": "general_sessions_gps",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "browserify-fs": "^1.0.0",
+    "jquery": "^3.3.1",
+    "pdf-lib": "^1.3.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4",
+    "survey-creator": "latest",
+    "survey-pdf": "latest",
+    "survey-react": "latest",
+    "surveyjs-widgets": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
