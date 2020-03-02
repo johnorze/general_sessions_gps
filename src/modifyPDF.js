@@ -11,10 +11,13 @@ export async function modifyPDF(data)
 
     const pages = pdfDoc.getPages()
     const firstPage = pages[0]
-    const { width, height } = firstPage.getSize()
+    const secondPage = pages[1]
+    // const { width, height } = firstPage.getSize()
 
     console.log(data.court)
-
+    
+    // PAGE ONE
+    // Insert court - pg 1
     switch(data.court) { 
         case "1":
             firstPage.drawText("General Sessions", {
@@ -63,6 +66,8 @@ export async function modifyPDF(data)
             break
         
         }
+
+        // insert county using helper function
         firstPage.drawText(findCounty(data.county), {
             x: 350,
             y: 735,
@@ -70,13 +75,95 @@ export async function modifyPDF(data)
             font: helveticaFont,
             color: rgb(0,0,0),            
         })
-           
+        
+        // insert file number
+        firstPage.drawText(data.fileNumber, {
+            x: 405,
+            y: 715,
+            size: 12,
+            font: helveticaFont,
+            color: rgb(0,0,0),
+        })
+        
+        // insert division
+        if (typeof(data.division) === "string") {
+            firstPage.drawText(data.division, {
+                x: 405,
+                y: 680,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+             })
+        }
+        
+        // insert plaintiff name
+        firstPage.drawText(data.plaintiffName, {
+            x: 150,
+            y: 638,
+            size: 12,
+            font: helveticaFont,
+            color: rgb(0,0,0),
+        })
+
+        // insert defendant name
+        firstPage.drawText(data.defendantName, {
+            x: 150,
+            y: 602,
+            size: 12,
+            font: helveticaFont,
+            color: rgb(0,0,0),
+        })
+
+        if (data.filedBefore == "2") {
+            firstPage.drawText("X", {
+                x: 296,
+                y: 553,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            }) 
+        }
+        else if (data.filedBefore == "1") {
+            firstPage.drawText("X", {
+                x: 445,
+                y: 553,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            }) 
+        }
+        
+        // insert auto value
+        if (typeof(data.autoValue) === "string") {
+            firstPage.drawText(data.autoValue, {
+                x: 465,
+                y: 81,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            }) 
+        } 
+
+        // PAGE TWO
+        for (let i = 1; i<12; i++) {
+            for (let j = 1; j<16; j++) {
+                secondPage.drawText("X", {
+                    x: i*50,
+                    y: j*50,
+                    size: 12,
+                    font: helveticaFont,
+                    color: rgb(0,0,0),
+                }) 
+            }
+        }
+    
+
     const pdfBytes = await pdfDoc.save()
-    var data = new Blob([pdfBytes], {type: 'application/pdf'});
-    var csvURL = window.URL.createObjectURL(data);
+    var blob = new Blob([pdfBytes], {type: 'application/pdf'});
+    var pdfURL = window.URL.createObjectURL(blob);
 
     var tempLink = document.createElement('a');
-    tempLink.href = csvURL;
+    tempLink.href = pdfURL;
     tempLink.setAttribute('download', 'filename.pdf');
     tempLink.click();
 
@@ -153,89 +240,34 @@ function findCounty(county)
         case "66": return "Obion"
         case "67": return "Overton"
         case "68": return "Perry"
-        case "69":
-            return "Pickett"
-            break
-        case "70":
-            return "Polk"
-            break
-        case "71":
-            return "Putnam"
-            break
-        case "72":
-            return "Rhea"
-            break
-        case "73":
-            return "Roane"
-            break
-        case "74":
-            return "Robertson"
-            break
-        case "75":
-            return "Rutherford"
-            break
-        case "76":
-            return "Scott"
-            break
-        case "77":
-            return "Sequatchie"
-            break
-        case "78":
-            return "Sevier"
-            break
-        case "79":
-            return "Shelby"
-            break
-        case "80":
-            return "Smith"
-            break
-        case "81":
-            return "Stewart"
-            break
-        case "82":
-            return "Sullivan"
-            break
-        case "83":
-            return "Sumner"
-            break
-        case "84":
-            return "Tipton"
-            break
-        case "85":
-            return "Trousdale"
-            break
-        case "86":
-            return "Unicoi"
-            break
-        case "87":
-            return "Union"
-            break
-        case "88":
-            return "Van Buren"
-            break
-        case "89": 
-            return "Warren"
-            break
-        case "90":
-            return "Washington"
-            break
-        case "91":
-            return "Wayne"
-            break
-        case "92":
-            return "Weakley"
-            break
-        case "93":
-            return "White"
-            break
-        case "94":
-            return "Williamson"
-            break
-        case "95":
-            return "Wilson"
-            break
-        default:
-            return
+        case "69": return "Pickett"
+        case "70": return "Polk"
+        case "71": return "Putnam"
+        case "72": return "Rhea"
+        case "73": return "Roane"
+        case "74": return "Robertson"
+        case "75": return "Rutherford"
+        case "76": return "Scott"
+        case "77": return "Sequatchie"
+        case "78": return "Sevier"
+        case "79": return "Shelby"
+        case "80": return "Smith"
+        case "81": return "Stewart"
+        case "82": return "Sullivan"
+        case "83": return "Sumner"
+        case "84": return "Tipton"
+        case "85": return "Trousdale"
+        case "86": return "Unicoi"
+        case "87": return "Union"
+        case "88": return "Van Buren"
+        case "89": return "Warren"
+        case "90": return "Washington"
+        case "91": return "Wayne"
+        case "92": return "Weakley"
+        case "93": return "White"
+        case "94": return "Williamson"
+        case "95": return "Wilson"
+        default: return
 
     }
 

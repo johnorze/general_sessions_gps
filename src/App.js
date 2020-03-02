@@ -76,7 +76,8 @@ class App extends Component {
               "2|Juvenile & Family",
               "3|Chancery",
               "4|Criminal"
-            ]
+            ],
+            isRequired: true,
           },
           {
             type: "dropdown",
@@ -178,12 +179,14 @@ class App extends Component {
               "93|White",
               "94|Williamson",
               "95|Wilson",
-            ]
+            ],
+            isRequired: true,
           },
           {
             type: "text",
             name: "division",
             title: "If your case has a division number, enter it here. If not, leave it blank. (This is for large counties only.)",
+            isRequired: false,
           },
           {
             type: "radiogroup",
@@ -192,24 +195,26 @@ class App extends Component {
             choices: [
               "1|Yes, I have filed a protected income and assets form before.",
               "2|No, I have not filed a protected income and assets form.",
-            ]
+            ],
+            isRequired: true,
           },
           {
             type: "text",
             name: "fileNumber",
-            title: "What is the file number of your case? (This number should be listed on papers you got about your case.)"
+            title: "What is the file number of your case? (This number should be listed on papers you got about your case.)",
+            isRequired: true,
           },
           {
             type: "text",
             name: "defendantName",
             title: "Please enter your full name (First Middle Last).",
-            isRequired: false,
+            isRequired: true,
           },
           {
             type: "text",
             name: "plaintiffName",
             title: "Please enter the full name of the plaintiff/creditor. (This is the person or company who is suing you.)",
-            isRequired: false,
+            isRequired: true,
           },
         ],
       },
@@ -219,6 +224,7 @@ class App extends Component {
             type: "comment",
             name: "autoDescription",
             title: "What car, truck, or other vehicle, do you have? (Year, make, model)",
+            maxLength: 50,
           },
           {
             type: "text",
@@ -311,6 +317,7 @@ class App extends Component {
 
   onValueChanged(result) {
     console.log("value changed!");
+    console.log(result.data)
   }
 
   onComplete(result) {
