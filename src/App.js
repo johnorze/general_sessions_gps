@@ -279,7 +279,7 @@ class App extends Component {
           {
             type: "text",
             name: "email",
-            title:
+            title: 
               'Thank you! Your browser will now download a copy of the form you can file with your court. Please review it carefully.'
           }
         ]

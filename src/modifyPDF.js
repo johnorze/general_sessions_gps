@@ -195,45 +195,48 @@ export async function modifyPDF(data)
                 color: rgb(0,0,0),
             })
         }
+        if(data.bankAccounts !== null && data.bankAccounts !== undefined)
+        {
 
-        if (typeof(data.bankAccounts.bank1) === "string") {
-            secondPage.drawText(data.bankAccounts.bank1, {
-                x: 245,
-                y: 515,
-                size: 12,
-                font: helveticaFont,
-                color: rgb(0,0,0),
-            })
-        }
+            if (typeof(data.bankAccounts.bank1) === "string") {
+                secondPage.drawText(data.bankAccounts.bank1, {
+                    x: 245,
+                    y: 515,
+                    size: 12,
+                    font: helveticaFont,
+                    color: rgb(0,0,0),
+                })
+            }
 
-        if (typeof(data.bankAccounts.bank1Balance) === "string") {
-            secondPage.drawText(data.bankAccounts.bank1Balance, {
-                x: 465,
-                y: 515,
-                size: 12,
-                font: helveticaFont,
-                color: rgb(0,0,0),
-            })
-        }
+            if (typeof(data.bankAccounts.bank1Balance) === "string") {
+                secondPage.drawText(data.bankAccounts.bank1Balance, {
+                    x: 465,
+                    y: 515,
+                    size: 12,
+                    font: helveticaFont,
+                    color: rgb(0,0,0),
+                })
+            }
 
-        if (typeof(data.bankAccounts.bank2) === "string") {
-            secondPage.drawText(data.bankAccounts.bank2, {
-                x: 245,
-                y: 495,
-                size: 12,
-                font: helveticaFont,
-                color: rgb(0,0,0),
-            })
-        }
+            if (typeof(data.bankAccounts.bank2) === "string") {
+                secondPage.drawText(data.bankAccounts.bank2, {
+                    x: 245,
+                    y: 495,
+                    size: 12,
+                    font: helveticaFont,
+                    color: rgb(0,0,0),
+                })
+            }
 
-        if (typeof(data.bankAccounts.bank2Balance) === "string") {
-            secondPage.drawText(data.bankAccounts.bank2Balance, {
-                x: 465,
-                y: 495,
-                size: 12,
-                font: helveticaFont,
-                color: rgb(0,0,0),
-            })
+            if (typeof(data.bankAccounts.bank2Balance) === "string") {
+                secondPage.drawText(data.bankAccounts.bank2Balance, {
+                    x: 465,
+                    y: 495,
+                    size: 12,
+                    font: helveticaFont,
+                    color: rgb(0,0,0),
+                })
+            }
         }
 
         if (typeof(data.otherDescription) === "string") {
@@ -259,13 +262,32 @@ export async function modifyPDF(data)
         if (typeof(data.cashValue) === "string") {
             secondPage.drawText(data.cashValue, {
                 x: 465,
-                y: 310,
+                y: 415,
                 size: 12,
                 font: helveticaFont,
                 color: rgb(0,0,0),
             })
         }
     
+        if (typeof(data.toolsDescription) === "string") {
+            secondPage.drawText(data.toolsDescription, {
+                x: 245,
+                y: 395,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.toolsValue) === "string") {
+            secondPage.drawText(data.toolsValue, {
+                x: 465,
+                y: 395,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
 
     const pdfBytes = await pdfDoc.save()
     var blob = new Blob([pdfBytes], {type: 'application/pdf'});
