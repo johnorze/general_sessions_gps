@@ -31,33 +31,6 @@ export { MyQuestion } from "./MyQuestion";
 
 Survey.StylesManager.applyTheme("default");
 
-//widgets.icheck(Survey, $);
-widgets.prettycheckbox(Survey);
-widgets.select2(Survey, $);
-widgets.inputmask(Survey);
-widgets.jquerybarrating(Survey, $);
-widgets.jqueryuidatepicker(Survey, $);
-widgets.nouislider(Survey);
-widgets.select2tagbox(Survey, $);
-widgets.signaturepad(Survey);
-widgets.sortablejs(Survey);
-widgets.ckeditor(Survey);
-widgets.autocomplete(Survey, $);
-widgets.bootstrapslider(Survey);
-
-//widgets.icheck(SurveyCore, $);
-widgets.prettycheckbox(SurveyCore);
-widgets.select2(SurveyCore, $);
-widgets.inputmask(SurveyCore);
-widgets.jquerybarrating(SurveyCore, $);
-widgets.jqueryuidatepicker(SurveyCore, $);
-widgets.nouislider(SurveyCore);
-widgets.select2tagbox(SurveyCore, $);
-widgets.signaturepad(SurveyCore);
-widgets.sortablejs(SurveyCore);
-widgets.ckeditor(SurveyCore);
-widgets.autocomplete(SurveyCore, $);
-widgets.bootstrapslider(SurveyCore);
 
 class App extends Component {
 
