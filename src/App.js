@@ -319,6 +319,7 @@ class App extends Component {
         <div className="surveyjs">
           {/*If you do not want to show survey, comment the lines below*/}
           <h1>General Sessions GPS </h1>
+          <h1>This is a development/testing site - use at your own risk </h1>
           <Survey.Survey
             model={model}
             onComplete={this.onComplete}
