@@ -125,7 +125,7 @@ export async function modifyPDF(data)
         }
         else if (data.filedBefore == "1") {
             firstPage.drawText("X", {
-                x: 445,
+                x: 440,
                 y: 553,
                 size: 12,
                 font: helveticaFont,
@@ -144,17 +144,126 @@ export async function modifyPDF(data)
             }) 
         } 
 
+        if (typeof(data.autoDescription) === "string") {
+            firstPage.drawText(data.autoDescription, {
+                x: 245,
+                y: 81,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
         // PAGE TWO
-        for (let i = 1; i<12; i++) {
-            for (let j = 1; j<16; j++) {
-                secondPage.drawText("X", {
-                    x: i*50,
-                    y: j*50,
-                    size: 12,
-                    font: helveticaFont,
-                    color: rgb(0,0,0),
-                }) 
-            }
+        // insert furniture description & value
+        if (typeof(data.furnitureDescription) === "string") {
+            secondPage.drawText(data.furnitureDescription, {
+                x: 245,
+                y: 760,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+        if (typeof(data.furnitureValue) === "string") {
+            secondPage.drawText(data.furnitureValue, {
+                x: 465,
+                y: 760,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+        
+        // insert household goods description and value
+        if (typeof(data.householdGoodsDescription) === "string") {
+            secondPage.drawText(data.householdGoodsDescription, {
+                x: 245,
+                y: 657,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.householdGoodsValue) === "string") {
+            secondPage.drawText(data.householdGoodsValue, {
+                x: 465,
+                y: 657,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.bankAccounts.bank1) === "string") {
+            secondPage.drawText(data.bankAccounts.bank1, {
+                x: 245,
+                y: 515,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.bankAccounts.bank1Balance) === "string") {
+            secondPage.drawText(data.bankAccounts.bank1Balance, {
+                x: 465,
+                y: 515,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.bankAccounts.bank2) === "string") {
+            secondPage.drawText(data.bankAccounts.bank2, {
+                x: 245,
+                y: 495,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.bankAccounts.bank2Balance) === "string") {
+            secondPage.drawText(data.bankAccounts.bank2Balance, {
+                x: 465,
+                y: 495,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.otherDescription) === "string") {
+            secondPage.drawText(data.otherDescription, {
+                x: 245,
+                y: 475,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.otherValue) === "string") {
+            secondPage.drawText(data.otherValue, {
+                x: 465,
+                y: 475,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.cashValue) === "string") {
+            secondPage.drawText(data.cashValue, {
+                x: 465,
+                y: 310,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
         }
     
 

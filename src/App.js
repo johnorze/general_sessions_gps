@@ -166,8 +166,8 @@ class App extends Component {
             name: "filedBefore",
             title: "Have you ever filed a form to protect your assets and income from creditors before? This form is called an Affidavit of Claim Exemptions or Protected Income and Assets Form.",
             choices: [
-              "1|Yes, I have filed a protected income and assets form before.",
-              "2|No, I have not filed a protected income and assets form.",
+              "1|Yes, I have filed a protected income and assets form before. I am making a change to that form.",
+              "2|No, I have not filed a protected income and assets form. (This is the first time.)",
             ],
             isRequired: true,
           },
@@ -268,7 +268,7 @@ class App extends Component {
             title: "How much are these tools of the trade worth?"
           },
           {
-            type: "cash",
+            type: "text",
             name: "cashValue",
             title: "How much cash do you have?"
           }
