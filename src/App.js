@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
-import logo from "./logo.svg";
+import logo from "./TJC_colorlogohires.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { modifyPDF } from "./modifyPDF"
@@ -319,12 +319,11 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Tennessee Justice Center</h2>
+
         </div>
         <div className="surveyjs">
           {/*If you do not want to show survey, comment the lines below*/}
-          <h1>General Sessions GPS </h1>
-          <h1>This is a development/testing site - use at your own risk </h1>
+          <h4>This is a development/testing site - use at your own risk </h4>
           <Survey.Survey
             model={model}
             onComplete={this.onComplete}
