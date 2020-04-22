@@ -37,6 +37,7 @@ class App extends Component {
   json = {
     title: "Tennessee General Sessions Protected Income & Assets",
     showProgressBar: "top",
+    completedHtml: "<p><h4>Thank you! Your browser will now download a copy of the form you can file with your court. Please review it carefully.</h4></p>",
     pages: [
       {
         questions: [ 
@@ -194,9 +195,9 @@ class App extends Component {
       {
         elements: [ 
           {
-            type: "comment",
+            type: "text",
             name: "autoDescription",
-            title: "What car, truck, or other vehicle, do you have? (Year, make, model)",
+            title: "What car, truck, or other vehicle, do you own? (if any) (Include Year, make, model)",
             maxLength: 50,
           },
           {
@@ -205,7 +206,7 @@ class App extends Component {
             title: "How much is the car, truck, or other vehicle worth?"
           },
           {
-            type: "comment",
+            type: "text",
             name: "furnitureDescription",
             title: "What furniture and electronics do you own? (You could say things like: 36 inch TV, queen size matress and bed frame, iPad, Dell PC, etc.)",
           },
@@ -215,7 +216,7 @@ class App extends Component {
             title: "How much are these electronics and furniture worth?"
           },        
           {
-            type: "comment",
+            type: "text",
             name: "householdGoodsDescription",
             title: "What household goods do you own? (You could say things like: dishes, towels, linens, etc.)",
           },
@@ -224,6 +225,10 @@ class App extends Component {
             name: "householdGoodsValue",
             title: "How much are your household goods worth?"
           }, 
+        ],
+      },
+      {
+        elements: [
           {
             type: "multipletext",
             name: "bankAccounts",
@@ -248,7 +253,7 @@ class App extends Component {
             ]
           }, 
           {
-            type: "comment",
+            type: "text",
             name: "otherDescription",
             title: "What other items do you own?",
           },
@@ -258,7 +263,7 @@ class App extends Component {
             title: "How much are these other items worth?"
           },
           {
-            type: "comment",
+            type: "text",
             name: "toolsDescription",
             title: "Do you own any tools of the trade? These are things that you need to make a living. Describe them below.",
           },
@@ -280,7 +285,7 @@ class App extends Component {
             type: "text",
             name: "email",
             title: 
-              'Thank you! Your browser will now download a copy of the form you can file with your court. Please review it carefully.'
+              'If you want email updates from Tennessee Justice Center, enter your email (optional).'
           }
         ]
       }
