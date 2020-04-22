@@ -316,6 +316,7 @@ class App extends Component {
   render() {
     var model = new Survey.Model(this.json);
     return (
+
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
