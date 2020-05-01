@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as Survey from "survey-react";
-import "survey-react/survey.css";
 import logo from "./TJC_colorlogohires.png";
 import "./App.css";
 import { modifyPDF } from "./modifyPDF"
