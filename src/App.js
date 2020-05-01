@@ -3,13 +3,11 @@ import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import logo from "./TJC_colorlogohires.png";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.css";
 import { modifyPDF } from "./modifyPDF"
 
 import "jquery-ui/themes/base/all.css";
 import "nouislider/distribute/nouislider.css";
 import "select2/dist/css/select2.css";
-import "bootstrap-slider/dist/css/bootstrap-slider.css";
 
 
 import $ from "jquery";
