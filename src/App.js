@@ -198,60 +198,84 @@ class App extends Component {
             type: "text",
             name: "autoDescription",
             title: "What car, truck, or other vehicle, do you own? (if any) (Include Year, make, model)",
-            maxLength: 50,
+            maxLength: 100,
           },
           {
             type: "text",
             name: "autoValue",
-            title: "How much is the car, truck, or other vehicle worth?"
+            title: "How much is the car, truck, or other vehicle worth?",
+            maxLength: 10,
           },
           {
             type: "text",
             name: "furnitureDescription",
             title: "What furniture and electronics do you own? (You could say things like: 36 inch TV, queen size matress and bed frame, iPad, Dell PC, etc.)",
+            maxLength: 100,
           },
           {
             type: "text",
             name: "furnitureValue",
-            title: "How much are these electronics and furniture worth?"
+            title: "How much are these electronics and furniture worth?",
+            maxLength: 10,
           },        
           {
             type: "text",
             name: "householdGoodsDescription",
             title: "What household goods do you own? (You could say things like: dishes, towels, linens, etc.)",
+            maxLength: 100,
           },
           {
             type: "text",
             name: "householdGoodsValue",
-            title: "How much are your household goods worth?"
+            title: "How much are your household goods worth?",
+            maxLength: 10,
           }, 
         ],
       },
       {
         elements: [
           {
-            type: "multipletext",
-            name: "bankAccounts",
-            title: "Questions about your bank account.",
-            items: [
-              {
-                name: "bank1",
-                title: "What is the name of your bank?"
-              },
-              {
-                name: "bank1Balance",
-                title: "How much money do you have in this bank account?"
-              },
-              {
-                name: "bank2",
-                title: "If you have a second bank account, what is the name of that bank? (Skip if you do not have a second bank.)"
-              },
-              {
-                name: "bank2Balance",
-                title: "How much money do you have in your second bank account? (Skip if you do not have a second bank.)"
-              },
-            ]
+            type: "text",
+            name: "bank1",
+            title: "What is the name of your bank?",
+          },
+          {
+            type: "text",  
+            name: "bank1Balance",
+            title: "How much money do you have in this bank account?",
+          },
+          {
+            type: "radiogroup",
+            name: "bank1protected",
+            title: "Do you receive any Social Security, SSI, Unemployment, Workers Comp, Families First (AFDC or welfare), veteran's benefits, alimony, child support, or federal, state, or city pension in this account?",
+            choices: [
+              "1|Yes, I get one of the benefits above at this bank account.",
+              "2|No, I do not get any of these benefits at this bank account.",
+            ],
+          },            
+          {
+            type: "text",
+            name: "bank2",
+            title: "If you have a second bank account, what is the name of that bank? (Skip if you do not have a second bank.)",
+          },
+          {
+            type: "text",
+            name: "bank2Balance",
+            title: "How much money do you have in your second bank account? (Skip if you do not have a second bank.)"
+          },
+          {
+            type: "radiogroup",
+            name: "bank2protected",
+            title: "Do you receive any Social Security, SSI, Unemployment, Workers Comp, Families First (AFDC or welfare), veteran's benefits, alimony, child support, or federal, state, or city pension in this account?",
+            choices: [
+              "1|Yes, I get one of the benefits above at this bank account.",
+              "2|No, I do not get any of these benefits at this bank account.",
+            ],
           }, 
+        ],
+      },
+        { 
+          elements: [
           {
             type: "text",
             name: "otherDescription",

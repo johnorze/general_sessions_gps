@@ -75,15 +75,8 @@ export async function modifyPDF(data)
             font: helveticaFont,
             color: rgb(0,0,0),            
         })
-        
-        // insert file number
-        firstPage.drawText(data.fileNumber, {
-            x: 405,
-            y: 715,
-            size: 12,
-            font: helveticaFont,
-            color: rgb(0,0,0),
-        })
+
+        writeAnswer(data.fileNumber, firstPage, 405, 715, helveticaFont)
         
         // insert division
         if (typeof(data.division) === "string") {
@@ -114,7 +107,7 @@ export async function modifyPDF(data)
             color: rgb(0,0,0),
         })
 
-        if (data.filedBefore == "2") {
+        if (data.filedBefore === "2") {
             firstPage.drawText("X", {
                 x: 296,
                 y: 553,
@@ -123,7 +116,7 @@ export async function modifyPDF(data)
                 color: rgb(0,0,0),
             }) 
         }
-        else if (data.filedBefore == "1") {
+        else if (data.filedBefore === "1") {
             firstPage.drawText("X", {
                 x: 440,
                 y: 553,
@@ -145,25 +138,13 @@ export async function modifyPDF(data)
         } 
 
         if (typeof(data.autoDescription) === "string") {
-            firstPage.drawText(data.autoDescription, {
-                x: 245,
-                y: 81,
-                size: 12,
-                font: helveticaFont,
-                color: rgb(0,0,0),
-            })
+            multiLineAnswer(data.autoDescription, firstPage, 245, 81, helveticaFont)
         }
 
         // PAGE TWO
         // insert furniture description & value
         if (typeof(data.furnitureDescription) === "string") {
-            secondPage.drawText(data.furnitureDescription, {
-                x: 245,
-                y: 760,
-                size: 12,
-                font: helveticaFont,
-                color: rgb(0,0,0),
-            })
+            multiLineAnswer(data.furnitureDescription, secondPage, 245, 760, helveticaFont)
         }
         if (typeof(data.furnitureValue) === "string") {
             secondPage.drawText(data.furnitureValue, {
@@ -177,13 +158,7 @@ export async function modifyPDF(data)
         
         // insert household goods description and value
         if (typeof(data.householdGoodsDescription) === "string") {
-            secondPage.drawText(data.householdGoodsDescription, {
-                x: 245,
-                y: 657,
-                size: 12,
-                font: helveticaFont,
-                color: rgb(0,0,0),
-            })
+            multiLineAnswer(data.householdGoodsDescription, secondPage, 245, 657, helveticaFont)
         }
 
         if (typeof(data.householdGoodsValue) === "string") {
@@ -195,58 +170,61 @@ export async function modifyPDF(data)
                 color: rgb(0,0,0),
             })
         }
-        if(data.bankAccounts !== null && data.bankAccounts !== undefined)
-        {
-
-            if (typeof(data.bankAccounts.bank1) === "string") {
-                secondPage.drawText(data.bankAccounts.bank1, {
-                    x: 245,
-                    y: 515,
-                    size: 12,
-                    font: helveticaFont,
-                    color: rgb(0,0,0),
-                })
-            }
-
-            if (typeof(data.bankAccounts.bank1Balance) === "string") {
-                secondPage.drawText(data.bankAccounts.bank1Balance, {
-                    x: 465,
-                    y: 515,
-                    size: 12,
-                    font: helveticaFont,
-                    color: rgb(0,0,0),
-                })
-            }
-
-            if (typeof(data.bankAccounts.bank2) === "string") {
-                secondPage.drawText(data.bankAccounts.bank2, {
-                    x: 245,
-                    y: 495,
-                    size: 12,
-                    font: helveticaFont,
-                    color: rgb(0,0,0),
-                })
-            }
-
-            if (typeof(data.bankAccounts.bank2Balance) === "string") {
-                secondPage.drawText(data.bankAccounts.bank2Balance, {
-                    x: 465,
-                    y: 495,
-                    size: 12,
-                    font: helveticaFont,
-                    color: rgb(0,0,0),
-                })
-            }
-        }
-
-        if (typeof(data.otherDescription) === "string") {
-            secondPage.drawText(data.otherDescription, {
+        if (typeof(data.bank1) === "string") {
+            secondPage.drawText(data.bank1, {
                 x: 245,
-                y: 475,
+                y: 515,
                 size: 12,
                 font: helveticaFont,
                 color: rgb(0,0,0),
             })
+        }
+        
+        if(data.bank1protected === "1") {
+            if(data.bank2protected === "1") {
+                writeAnswer(`${data.bank1}, ${data.bank2}`, firstPage, 43, 181)
+                
+            }
+            else {
+                writeAnswer(data.bank1, firstPage, 43, 181)
+            }
+        }
+        
+        if(data.bank2protected === "1")
+            writeAnswer(data.bank2, firstPage, 43, 181)
+            
+        if (typeof(data.bank1Balance) === "string") {
+            secondPage.drawText(data.bank1Balance, {
+                x: 465,
+                y: 515,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.bank2) === "string") {
+            secondPage.drawText(data.bank2, {
+                x: 245,
+                y: 495,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.bank2Balance) === "string") {
+            secondPage.drawText(data.bank2Balance, {
+                x: 465,
+                y: 495,
+                size: 12,
+                font: helveticaFont,
+                color: rgb(0,0,0),
+            })
+        }
+
+        if (typeof(data.otherDescription) === "string") {
+            multiLineAnswer(data.otherDescription, secondPage, 245, 475, helveticaFont)
         }
 
         if (typeof(data.otherValue) === "string") {
@@ -295,9 +273,78 @@ export async function modifyPDF(data)
 
     var tempLink = document.createElement('a');
     tempLink.href = pdfURL;
-    tempLink.setAttribute('download', 'filename.pdf');
+    tempLink.setAttribute('download', 'protected-income-and-assets.pdf');
     tempLink.click();
 
+}
+
+function multiLineAnswer(answer, page, x, y, font)
+{
+    if(String(answer).length <= 35) {
+        writeAnswer(answer, page, x, y, font)
+    }
+    else {
+        const split = splitAnswer(answer, 35)
+        if(split[0]) {
+            writeAnswer(split[0], page, x, y, font)
+        }
+
+        if(split[1]) {
+            writeAnswer(split[1], page, x, y-20, font)
+        }
+        if(split[2]) {
+            writeAnswer(split[2], page, x, y-40, font)
+        }
+    }
+
+}
+
+function writeAnswer(answer, page, x, y, font)
+{
+    if (typeof(answer) === "string") {
+        page.drawText(answer, {
+            x: x,
+            y: y,
+            size: 12,
+            font: font,
+            color: rgb(0,0,0),
+        })
+    } 
+}
+
+function splitAnswer(answer, maxLength = 35)
+{
+    // split answer into segments < maxLength
+    let rAnswer = ['']
+
+    if(String(answer).length <= maxLength) {
+        return answer
+    }
+    else {
+        splitAnswer = String(answer).split(" ")
+        
+
+        let i = 0
+        let j = 0
+        let l = 0
+
+        while(i < splitAnswer.length) {
+            l = l + splitAnswer[i].length + 1
+            
+            if (l <= maxLength)
+            {
+                rAnswer[j] += splitAnswer[i] + " "
+            }
+            else {
+                rAnswer[j+1] = splitAnswer[i] + " "
+                l = splitAnswer[i].length + 1
+                j++
+            }
+            i++;
+        }
+
+        return rAnswer
+    }
 }
 
 function findCounty(county)
