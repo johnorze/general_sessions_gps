@@ -5,14 +5,12 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "browserify-fs": "^1.0.0",
-    "jquery": "^3.3.1",
     "pdf-lib": "^1.3.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
     "signature_pad": "^3.0.0-beta.3",
-    "survey-creator": "latest",
-    "survey-pdf": "latest",
+    "survey-core": "^1.7.4",
     "survey-react": "latest",
     "surveyjs-widgets": "latest"
   },
